@@ -1,12 +1,14 @@
-# Name: penepi-visualizer.py
+# Name: panepi_visualizer.py
+# Description: A collection of functions the user can call to read a csv file containing data about different epidemics
+# and pandemics.
+
+# NB: Each function can visualize data from other csv files as long as 'infection' and 'continent' are listed as
+# the first two columns. The example file, panepi-data.csv, is formatted in this manner.
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import datatoolslib
 
-
-# Data files
-
-ALL_INFECTIONS = 'panepi-data.csv'
 
 """ General Tools """
 
@@ -106,6 +108,10 @@ def multi_comp(datafile, infec1, infec2, continent1, continent2, stat):
 
 
 """ Test Code """
+
+# Data files
+ALL_INFECTIONS = 'panepi-data.csv'
+
 
 # show_available_info(ALL_INFECTIONS, 'continent')
 

@@ -1,4 +1,4 @@
-# Name: datacleaner.py
+# Name: owid_data_cleaner.py
 # Single-use program to modify the COVID-19 data provided by "Our World in Data", and export a re-formatted csv file.
 
 import pandas as pd
@@ -39,7 +39,7 @@ def prune_data(dataframe):
 
 # Function takes the list of data objects and writes a new csv file with the desired categories
 def create_csv(data_list):
-    with open('covid-data.csv', 'w', ) as csvfile:
+    with open('../covid-data.csv', 'w', ) as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['iso_code', 'continent', 'location', 'date', 'total_cases', 'total_deaths',
                          'total_cases_per_million', 'reproduction_rate', 'population', 'population_density',
