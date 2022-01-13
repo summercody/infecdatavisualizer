@@ -109,7 +109,7 @@ def multi_comp(datafile, infec1, infec2, continent1, continent2, stat):
 
 # show_available_info(ALL_INFECTIONS, 'continent')
 
-# comp_infec_in_continent(ALL_INFECTIONS, 'World', 'BBP', 'SPFLU', 'duration_in_years')
+# comp_infec_in_continent(ALL_INFECTIONS, 'Europe', 'COVID19', 'BBP', 'est_total_deaths')
 
 # comp_infec_between_continents(ALL_INFECTIONS, 'BBP', 'Africa', 'World', 'est_total_deaths')
 

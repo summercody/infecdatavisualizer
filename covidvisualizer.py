@@ -108,7 +108,7 @@ def infec_stat_all_countries(datafile, sample_size, stat):
 
 # show_available_info(COVID_19, 'headers')
 
-# comp_infec_between_countries(COVID_19, 'total_cases', 'DZA', 'ARM')
+# comp_infec_between_countries(COVID_19, 'total_cases_per_million', 'USA', 'CAN')
 
 # infec_stat_all_countries(COVID_19, 50, 'total_cases_per_million')
 
