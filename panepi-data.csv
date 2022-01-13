@@ -1,0 +1,43 @@
+infection,continent,duration_in_years,est_total_deaths
+COVID19,Africa,2,230874.0
+COVID19,Asia,2,1268110.0
+COVID19,North America,2,1236086.0
+COVID19,South America,2,1194529.0
+COVID19,Oceania,2,4663.0
+COVID19,Europe,2,1554351.0
+COVID19,European Union,2,917141.0
+COVID19,World,2,5488628.0
+SPFLU,Africa,2,2500000
+SPFLU,Asia,2,36000000
+SPFLU,North America,2,1600000
+SPFLU,South America,2,nan
+SPFLU,Oceania,2,nan
+SPFLU,Europe,2,2640000
+SPFLU,World,2,50000000
+HIV,Africa,41,nan
+HIV,Asia,41,nan
+HIV,North America,41,nan
+HIV,South America,41,nan
+HIV,Oceania,41,nan
+HIV,Europe,41,nan
+HIV,European Union,41,nan
+HIV,World,41,36300000
+HKF,Africa,1,nan
+HKF,Asia,1,nan
+HKF,North America,1,nan
+HKF,South America,1,nan
+HKF,Oceania,1,nan
+HKF,Europe,1,nan
+HKF,European Union,1,nan
+HKF,World,1,1000000
+BBP,Africa,5,12500000
+BBP,Asia,5,12500000
+BBP,North America,5,nan
+BBP,South America,5,nan
+BBP,Oceania,5,nan
+BBP,Europe,5,25000000
+BBP,European Union,5,nan
+BBP,World,5,137500000
+
+
+
