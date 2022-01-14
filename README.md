@@ -34,7 +34,7 @@ This file contains basic continent-specific and global data about a handful of h
 multiple sources. 
 
 NB: As historical data of this nature is more difficult to find, there are many fields marked as "nan". The data is
-best used as a means of displaying the functionality 'panepi_visualizer.py', and not as a comprehensive source of
+best used as a means of displaying the functionality of 'panepi_visualizer.py', and not as a comprehensive source of
 information.
 
 **iso-codes.csv**
