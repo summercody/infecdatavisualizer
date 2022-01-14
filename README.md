@@ -44,7 +44,7 @@ specifically those concerning continental and global data. It is largely used to
 
 **rawdata_cleaningcode**
 
-This directory houses the raw data gathered from "Our World In Data", which was used to create the abridged
+This directory houses the raw data gathered from ["Our World In Data"](https://ourworldindata.org/coronavirus), which was used to create the abridged
 'covid-data.csv' file. It also contains all the one-off programs written to parse data and create new csv files when
 necessary. 
 
