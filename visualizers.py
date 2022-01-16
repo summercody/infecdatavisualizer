@@ -206,27 +206,11 @@ def multi_comp(dataframe, infec1, infec2, continent1, continent2, stat):
     cont1_data = infection_data[infection_data.continent == continent1]
     cont2_data = infection_data[infection_data.continent == continent2]
 
-    # Store the integer value of the chosen statistic for each continent, for each infection. Except case is for values
-    # listed as NaN
-    try:
-        cont1_infec1 = int((cont1_data.loc[[infec1]])[stat].values)
-    except ValueError:
-        cont1_infec1 = (cont1_data.loc[[infec1]])[stat].values
-
-    try:
-        cont1_infec2 = int((cont1_data.loc[[infec2]])[stat].values)
-    except ValueError:
-        cont1_infec2 = (cont1_data.loc[[infec2]])[stat].values
-
-    try:
-        cont2_infec1 = int((cont2_data.loc[[infec1]])[stat].values)
-    except ValueError:
-        cont2_infec1 = (cont2_data.loc[[infec1]])[stat].values
-
-    try:
-        cont2_infec2 = int((cont2_data.loc[[infec2]])[stat].values)
-    except ValueError:
-        cont2_infec2 = (cont2_data.loc[[infec2]])[stat].values
+    # Store the integer value of the chosen statistic for each continent, for each infection. Adjust for NaN values.
+    cont1_infec1 = nan_checker(cont1_data, infec1, stat, continent1)
+    cont1_infec2 = nan_checker(cont1_data, infec2, stat, continent1)
+    cont2_infec1 = nan_checker(cont2_data, infec1, stat, continent2)
+    cont2_infec2 = nan_checker(cont2_data, infec2, stat, continent2)
 
     # Create a dictionary such that its dataframe will have the following columns: the chosen infections, the chosen
     # infection stats for continent 1, and the chosen infection stats for continent two
@@ -252,6 +236,23 @@ def multi_comp(dataframe, infec1, infec2, continent1, continent2, stat):
     # Show the graph
     plt.show()
     plt.pause(30)
+
+
+""" Assistive Functions (Not for direct user interaction) """
+
+
+# Checks for a NaN value in a slice of data and adjusts before graphing. For multi_comp.
+def nan_checker(data, infec, stat, continent):
+
+    # Slice data from dataframe
+    datapoint = (data.loc[[infec]])[stat].values
+
+    # Check if the value is NaN and replace with 0
+    if pd.isna(datapoint):
+        print("NOTE: No data for this value: " + continent + ", " + infec)
+        return 0
+    else:
+        return int(datapoint)  # Return an int of the value if not NaN
 
 
 """ Test Code: Single-Infection Visualizers """
@@ -292,5 +293,5 @@ infec_df = pd.read_csv('datafiles/panepi-data.csv')
 
 # Test 4: Displays a double-bar graph of estimated total deaths from COVID19 and the Bubonic Plague
 # in Africa and Europe.
-# multi_comp(infec_df, 'COVID19', 'BUBONIC PLAGUE', 'Africa', 'Europe', 'est_total_deaths')
+multi_comp(infec_df, 'COVID19', 'HIV', 'Africa', 'North America', 'est_total_deaths')
 

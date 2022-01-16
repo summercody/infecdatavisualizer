@@ -14,7 +14,7 @@ Testing: Example function calls are provided at the bottom to test code function
 import pandas as pd
 
 
-""" For covid_visualizer.py """
+""" For Single-Infection Visualizers """
 
 
 # Reads iso-codes.csv and creates a dictionary of all iso codes and their associated countries
