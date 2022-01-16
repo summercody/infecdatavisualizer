@@ -258,7 +258,7 @@ def nan_checker(data, infec, stat, continent):
 """ Test Code: Single-Infection Visualizers """
 
 # Data files
-covid_df = pd.read_csv('datafiles/covid-data.csv')
+# covid_df = pd.read_csv('datafiles/covid-data.csv')
 
 # Test 1: Testing the functionality of datatoolslib functions outside the library. Prints 'USA' to the console.
 # dtl.find_iso_code('United States')
@@ -275,7 +275,7 @@ covid_df = pd.read_csv('datafiles/covid-data.csv')
 """ Test Code: Multiple-Infection Visualizers """
 
 # Data files
-infec_df = pd.read_csv('datafiles/panepi-data.csv')
+# infec_df = pd.read_csv('datafiles/panepi-data.csv')
 
 # Test 1: Testing the functionality of datatoolslib functions outside the library. Prints all continent names from
 # 'panepi-data.csv' to the console as a list
@@ -293,5 +293,5 @@ infec_df = pd.read_csv('datafiles/panepi-data.csv')
 
 # Test 4: Displays a double-bar graph of estimated total deaths from COVID19 and the Bubonic Plague
 # in Africa and Europe.
-multi_comp(infec_df, 'COVID19', 'HIV', 'Africa', 'North America', 'est_total_deaths')
+# multi_comp(infec_df, 'COVID19', 'HIV', 'Africa', 'North America', 'est_total_deaths')
 

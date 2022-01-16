@@ -73,7 +73,7 @@ def available_info(dataframe, data_type=None):
 """ Test Code """
 
 # Data files
-COVID_19 = 'datafiles/covid-data.csv'
+# COVID_19 = 'datafiles/covid-data.csv'
 
 # Test 1: Prints 'DZA' to the console
 # find_iso_code('Algeria')

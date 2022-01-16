@@ -7,6 +7,8 @@ import pandas as pd
 
 
 # Sub functions
+
+# Stores dataframe of desired csv file and displays the available visualizations for the type of data
 def data_selector():
 
     available_visualizations = None
@@ -16,6 +18,7 @@ def data_selector():
 
     headers = dataframe.columns.values
 
+    # If data is about one infection, or multiple infections
     if headers[0] == 'iso_code':
         available_visualizations = {'v1': "Compare up to three user-selected countries [v1]",
                                     'v2': "Compare between all countries [v2]"}
@@ -27,6 +30,7 @@ def data_selector():
     return dataframe, available_visualizations
 
 
+# Loop that lets the user lookup multiple iso codes
 def run_iso_assist():
     searching = True
 
@@ -40,6 +44,7 @@ def run_iso_assist():
         dtl.find_iso_code(country)
 
 
+# Requests a statistic from the user and provides options for viewing the dataframe
 def get_stat(dataframe):
     stat = None
 
@@ -51,18 +56,21 @@ def get_stat(dataframe):
                      "\nType 'value check' to see all available data for a particular statistic"
                      "\n\nEnter choice: ")
 
+        # Print a summary of the entire dataframe
         if stat == 'data':
             data = dtl.available_info(dataframe)
             print("")
             print(data)
             stat = None
 
+        # Print a list of the columns as stat options
         if stat == 'options':
             data = dtl.available_info(dataframe, 'headers')
             print("")
             print(data)
             stat = None
 
+        # View values in a specified column
         if stat == 'value check':
             check = input("\nPlease enter the name of the statistic you'd like see values for: ")
             data = dtl.available_info(dataframe, check)
@@ -70,6 +78,7 @@ def get_stat(dataframe):
             print(data)
             stat = None
 
+        # Check whether stat is a viable value
         if stat is not None and stat != 'options' and stat != 'data':
             if stat not in list(dataframe.columns):
                 print("\nOops! This data is not available in your file.\n")
@@ -78,10 +87,13 @@ def get_stat(dataframe):
                 return stat
 
 
+# Provides two different ways to lookup dataframe info, for different types of datasets
 def value_search(dataframe, value_name, query_type, lookup_func):
 
     value = None
 
+    # Allows user to enter a specific keyword and search or its value in a list / dict using a specified function (e.g.
+    # run_iso_assist)
     if query_type == 'keyword search':
 
         value = input("\nPlease input a " + value_name + " or type 'lookup' to find a " + value_name + ": ")
@@ -91,6 +103,7 @@ def value_search(dataframe, value_name, query_type, lookup_func):
             lookup_func()
             value = None
 
+    # Uses available_info in the datatools library to help user query a dataframe's contents by column
     if query_type == 'option display':
 
         value = input("\nPlease input a " + value_name + ", or type 'view' to see your options: ")
@@ -115,12 +128,13 @@ def value_search(dataframe, value_name, query_type, lookup_func):
     return value
 
 
+# Runs processes to help user input and/or find a desired value
 def get_value(dataframe, value_name, query_type=None, lookup_func=None, value_checker=None):
 
     value = None
 
     while value is None:
-        if query_type is not None:
+        if query_type is not None:  # the dataframe and/or value can be queried, user is notified of this option
             value = value_search(dataframe, value_name, query_type, lookup_func)
         else:
             value = input("\nPlease input a " + value_name + ": ")
@@ -128,6 +142,7 @@ def get_value(dataframe, value_name, query_type=None, lookup_func=None, value_ch
         if value == 'q':
             quit()
 
+        # If the value might be viable, and a function is available to check the value for validity
         if value is not None and value != "lookup" and value != 'q' and value_checker is not None:
 
             value_options = value_checker()
@@ -146,6 +161,8 @@ def get_value(dataframe, value_name, query_type=None, lookup_func=None, value_ch
 
 
 # Visualizers
+
+# Guides user through inputting values for comp_infec_between_countries, and runs the function
 def run_vone(dataframe):
 
     iso_code2 = None
@@ -171,8 +188,10 @@ def run_vone(dataframe):
     vs.comp_infec_between_countries(dataframe, stat, iso_code1, iso_code2, iso_code3)
 
 
+# Guides user through inputting values for infec_stat_all_countries, and runs the function
 def run_vtwo(dataframe):
 
+    # Value presets, in case user chooses not to use one
     top = False
     bottom = False
     sample_size = None
@@ -200,6 +219,7 @@ def run_vtwo(dataframe):
     vs.infec_stat_all_countries(dataframe, sample_size, stat, top, bottom)
 
 
+# Guides user through inputting values for comp_infec_in_continent, and runs the function
 def run_vthree(dataframe):
 
     continent = get_value(dataframe, 'continent', query_type='option display')
@@ -210,6 +230,7 @@ def run_vthree(dataframe):
     vs.comp_infec_in_continent(dataframe, continent, infection1, infection2, stat)
 
 
+# Guides user through inputting values for comp_infec_between_continents, and runs the function
 def run_vfour(dataframe):
 
     infection = get_value(dataframe, 'infection', query_type='option display')
@@ -221,6 +242,7 @@ def run_vfour(dataframe):
     vs.comp_infec_between_continents(dataframe, infection, continent1, continent2, stat)
 
 
+# Guides user through inputting values for multi_comp, and runs the function
 def run_vfive(dataframe):
 
     infection1 = get_value(dataframe, 'first infection', query_type='option display')
@@ -234,7 +256,7 @@ def run_vfive(dataframe):
     vs.multi_comp(dataframe, infection1, infection2, continent1, continent2, stat)
 
 
-# Visualizer runner
+# Reads user input and decides which function to run
 def run_visualizer(chosen_visualization, dataframe):
     if chosen_visualization == 'v1':
         run_vone(dataframe)
@@ -252,7 +274,7 @@ def run_visualizer(chosen_visualization, dataframe):
         run_vfive(dataframe)
 
 
-# Visualizer selector
+# Displays available visualizations for a given dataframe and asks for user's choice
 def display_visualization_options(available_visualizations, dataframe):
     print("\nPlease select which type of visualization you'd like to run.\n")
 
@@ -267,16 +289,18 @@ def display_visualization_options(available_visualizations, dataframe):
     run_visualizer(chosen_visualization, dataframe)
 
 
-# Program runner
+# Run entire program
 def run_program():
     available_visualizations = None
     dataframe = None
     same_data = False
 
+    # Allow user to stay in program to run multiple visualizations
     running = True
     while running:
 
-        if same_data is False:
+        if same_data is False:  # Keep track of whether user wants to do multiple visualizations with same dataframe
+
             # Ask for the type of data in their file of choice
             visualizer_data = data_selector()
 
