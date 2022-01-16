@@ -2,7 +2,7 @@
 
 This program provides different ways to visualize pandemic
 and epidemic data graphically. It also provides two csv files with example data for COVID-19 through 01/09/22, and data 
-about a handful of other pandemics and epidemics in history (Spanish Flu, HIV,and the Bubonoic Plague).
+about a handful of other pandemics and epidemics in history (Spanish Flu, HIV,and the Bubonic Plague).
 
 **Technologies used:** Python, pandas, matplotlib
 
@@ -16,7 +16,7 @@ Run this module to chose visualizers and input data via the console.
 
 **visualizers.py**
 
-This module houses 5 functions which allow the user to compare country-based statistics about one infection (in this case,
+This module houses five functions which allow the user to compare country-based statistics about one infection (in this case,
 COVID-19) or continent-based statistics about other historical infections.
 
 **datatoolslib.py**
@@ -26,8 +26,7 @@ also provides a way to look up iso codes, which is useful for working with the c
 
 **data_cleaning.py**
 
-This module contains all the one-off scripts written to parse data and create new csv files when
-necessary. 
+This module contains all the one-off scripts written to parse data and create new csv files during the data cleaning process. 
 
 **covid-data.csv**
 
